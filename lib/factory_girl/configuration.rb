@@ -4,6 +4,7 @@ module FactoryGirl
     attr_reader :factories, :sequences, :traits, :strategies, :callback_names
 
     attr_accessor :allow_class_lookup
+    attr_accessor :use_parent_strategy
 
     def initialize
       @factories      = Decorator::DisallowsDuplicatesRegistry.new(Registry.new('Factory'))

@@ -69,7 +69,7 @@ module FactoryGirl
 
   class << self
     delegate :factories, :sequences, :traits, :callbacks, :strategies, :callback_names,
-      :to_create, :skip_create, :initialize_with, :constructor,
+      :use_parent_strategy, :to_create, :skip_create, :initialize_with, :constructor,
       :duplicate_attribute_assignment_from_initialize_with, :duplicate_attribute_assignment_from_initialize_with=,
       :allow_class_lookup, :allow_class_lookup=, to: :configuration
   end
@@ -134,6 +134,10 @@ module FactoryGirl
   def self.register_callback(name)
     name = name.to_sym
     callback_names << name
+  end
+
+  def self.use_parent_strategy=(value)
+    configuration.use_parent_strategy = value
   end
 end
 
